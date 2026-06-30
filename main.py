@@ -63,10 +63,10 @@ def add():
     description = input('Enter Description: ')
 
     account = {
-        "Website": website,
-        "Username": username,
-        "Password": password,
-        "Description": description
+        "Website": website.lower().strip(),
+        "Username": username.strip(),
+        "Password": password.strip(),
+        "Description": description.strip()
     }
 
     if os.path.exists("accounts.json"):
@@ -86,12 +86,13 @@ def add():
             print(f"Successfully added Account => {result}")
             return
 
+# Search Account
 def search():
      # Master Password to access vault
     with open(".env", "r") as f:
         admin_pass = f.readline().strip().lower()[6:]
         
-    account = input("Enter Account to be searched !")
+    account = input("Enter Account to be searched !").strip().lower()
         
     admin = input("Enter Admin Password: ").strip().lower()
     if admin == admin_pass:
@@ -107,12 +108,16 @@ def search():
     else: 
         print("INVALID CREDENTIALS !")
         return
-    
+   
+# Exit App 
+def Exit():
+    print("Thanks for your arrival !\nSee you soon !")
+    exit()
     
 def main():
-   print("'A' to Add Passwords\n'G' to Get all Passwords\n'F' to Generate Password\n'D' to Check your Password's Strength\n'S' to Search an Account")
+   print("'A' to Add Passwords\n'G' to Get all Passwords\n'F' to Generate Password\n'D' to Check your Password's Strength\n'S' to Search an Account\n'Z' to Exit")
    
-   user_choice = input('Enter your choice: ')
+   user_choice = input('Enter your choice: ').strip()
    
    if user_choice.lower() == 'a': 
        add()
@@ -122,5 +127,10 @@ def main():
        generate()
    elif user_choice.lower() == 's':
        search()
+   elif user_choice.lower() == 'z':
+       Exit()
+   else:
+       print("Please enter a valid choice !")
+       exit()
    
 main()
