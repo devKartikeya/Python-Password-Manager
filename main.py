@@ -1,7 +1,25 @@
-import json
 import os
+import json
+import random as r
+import string as s
 
 print('Welcome to the Python-Pass-Manager!')
+
+def generate():
+    password = ""
+    length = int(input('Enter Length of your Password: '))
+    isNum = input('Do you want to add Numbers to your Password, [Y, N]')
+
+    if isNum.lower() == 'n':
+       for i in range(length):
+           password += s.ascii_lowercase[r.randrange(0, len(s.ascii_lowercase))]
+       print(f"Your password is: {password}")
+       
+    elif isNum.lower() == 'y':
+        merge = s.ascii_lowercase + s.digits
+        for i in range(length):
+           password += merge[r.randrange(0, len(merge))]
+        print(f"Your password is: {password}")
 
 def get():
     with open(".env", "r") as f:
@@ -43,10 +61,21 @@ def add():
     data.append(account)
 
     with open("accounts.json", "w") as file:
-        json.dump(data, file, indent=4)
+        result = json.dump(data, file, indent=4)
+        if result: 
+            print(f"Successfully added Account => {result}")
+
 
 def main():
-    # add()
-    get()
+   print("'A' to Add Passwords\n'G' to Get all Passwords\n'F' to Generate Password")
+   
+   user_choice = input('Enter your choice: ')
+   
+   if user_choice.lower() == 'a': 
+       add()
+   elif user_choice.lower() == 'g':
+       get()
+   elif user_choice.lower() == 'f':
+       generate()
 
 main()
