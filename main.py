@@ -86,9 +86,31 @@ def add():
             print(f"Successfully added Account => {result}")
             return
 
-
+def search():
+     # Master Password to access vault
+    with open(".env", "r") as f:
+        admin_pass = f.readline().strip().lower()[6:]
+        
+    account = input("Enter Account to be searched !")
+        
+    admin = input("Enter Admin Password: ").strip().lower()
+    if admin == admin_pass:
+        with open("accounts.json", "r") as file:
+            data = json.load(file)
+            for d in data:
+                website = d["Website"]
+                if (website == account):
+                    print(d)
+                else: 
+                    print("Not found !")
+                
+    else: 
+        print("INVALID CREDENTIALS !")
+        return
+    
+    
 def main():
-   print("'A' to Add Passwords\n'G' to Get all Passwords\n'F' to Generate Password\n 'D' to Check your Password's Strength")
+   print("'A' to Add Passwords\n'G' to Get all Passwords\n'F' to Generate Password\n'D' to Check your Password's Strength\n'S' to Search an Account")
    
    user_choice = input('Enter your choice: ')
    
@@ -98,7 +120,7 @@ def main():
        get()
    elif user_choice.lower() == 'f':
        generate()
-   elif user_choice.lower() == 'd':
-       generate()
-
+   elif user_choice.lower() == 's':
+       search()
+   
 main()
