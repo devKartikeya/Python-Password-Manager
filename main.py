@@ -55,6 +55,7 @@ def get():
         print("INVALID CREDENTIALS !")
         return
     
+# Edit Password
 def edit():
     password = input('Enter Password to be edit: ')
     new_password = input("Enter New Password: ")
@@ -66,9 +67,37 @@ def edit():
                 data.remove(d)
                 data.append(d)
                 with open("accounts.json", "w") as file: 
-                    output = json.dump(data, file, indent=4)
-                    print('Password change ', d)
-        
+                    json.dump(data, file, indent=4)
+                    print('Password changed: ', d)
+                    return
+                                      
+def delete():
+    account = input('Enter Account to be deleted: ').strip().lower()
+    admin = input('Enter Admin Password: ').strip().lower() 
+    with open(".env", "r") as f:
+        admin_pass = f.readline().strip().lower()[6:]
+    if admin == admin_pass:
+        with open("accounts.json", "r") as f:
+            data = json.load(f)
+            for d in data:
+                if account == d["Website"]:
+                    confirmation = input('Are you sure you want to delete your account? [Y/N] ').strip().lower()
+                    if confirmation == 'y':
+                        data.remove(d)
+                        with open("accounts.json", "w") as file: 
+                            json.dump(data, file, indent=4)
+                            print('Password deleted: ', d)
+                            return
+                    else:
+                        print('Password did not deleted !')
+                        return
+                else: 
+                    print('Account not found !')
+                    return
+    else: 
+        print('INVALID CREDENTIALS !')
+        return
+            
 # Add new account
 def add():
     website = input('Enter Website name: ')
@@ -129,7 +158,7 @@ def Exit():
     exit()
     
 def main():
-   print("'A' to Add Passwords\n'G' to Get all Passwords\n'E' to Edit Password\n'F' to Generate Password\n'D' to Check your Password's Strength\n'S' to Search an Account\n'Z' to Exit")
+   print("'A' to Add Passwords\n'G' to Get all Passwords\n'E' to Edit Password\n'D' to Delete Password\n'F' to Generate Password\n'I' to Check your Password's Strength\n'S' to Search an Account\n'Z' to Exit")
    
    user_choice = input('Enter your choice: ').strip()
    
@@ -139,8 +168,12 @@ def main():
        get()
    elif user_choice.lower() == 'e':
        edit()
+   elif user_choice.lower() == 'd':
+       delete()
    elif user_choice.lower() == 'f':
        generate()
+   elif user_choice.lower() == 'i':
+       strengthChecker()
    elif user_choice.lower() == 's':
        search()
    elif user_choice.lower() == 'z':

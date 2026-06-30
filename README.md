@@ -35,6 +35,18 @@ Display every stored account in the password vault after successful master passw
 
 ---
 
+### 📋 Delete Account
+
+Delete account by first entering master password for verification and security.
+
+---
+
+### 📋 Edit Account
+
+Edit your accounts simply by matching your website domain.
+
+---
+
 ### 🎲 Password Generator
 
 Generate random passwords with customizable length.
