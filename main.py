@@ -54,6 +54,20 @@ def get():
     else: 
         print("INVALID CREDENTIALS !")
         return
+    
+def edit():
+    password = input('Enter Password to be edit: ')
+    new_password = input("Enter New Password: ")
+    with open("accounts.json", "r") as f:
+        data = json.load(f)
+        for d in data:
+            if password == d["Password"]:
+                d["Password"] = new_password
+                data.remove(d)
+                data.append(d)
+                with open("accounts.json", "w") as file: 
+                    output = json.dump(data, file, indent=4)
+                    print('Password change ', d)
         
 # Add new account
 def add():
@@ -115,7 +129,7 @@ def Exit():
     exit()
     
 def main():
-   print("'A' to Add Passwords\n'G' to Get all Passwords\n'F' to Generate Password\n'D' to Check your Password's Strength\n'S' to Search an Account\n'Z' to Exit")
+   print("'A' to Add Passwords\n'G' to Get all Passwords\n'E' to Edit Password\n'F' to Generate Password\n'D' to Check your Password's Strength\n'S' to Search an Account\n'Z' to Exit")
    
    user_choice = input('Enter your choice: ').strip()
    
@@ -123,6 +137,8 @@ def main():
        add()
    elif user_choice.lower() == 'g':
        get()
+   elif user_choice.lower() == 'e':
+       edit()
    elif user_choice.lower() == 'f':
        generate()
    elif user_choice.lower() == 's':
