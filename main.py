@@ -25,7 +25,6 @@ def strengthChecker():
         print('Password is very Strong !')
         return
     
-
 # Generate Password
 def generate():
     password = ""
@@ -77,7 +76,8 @@ def edit():
                     json.dump(data, file, indent=4)
                     print('Password changed: ', d)
                     return
-                                      
+            
+# Delete Account                          
 def delete():
     account = input('Enter Account to be deleted: ').strip().lower()
     admin = input('Enter Admin Password: ').strip().lower() 
@@ -149,8 +149,7 @@ def search():
         with open("accounts.json", "r") as file:
             data = json.load(file)
             for d in data:
-                website = d["Website"]
-                if (website == account):
+                if (d["Website"] == account):
                     print(d)
                 else: 
                     print("Not found !")
