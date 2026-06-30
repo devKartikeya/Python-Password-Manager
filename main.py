@@ -9,15 +9,22 @@ print('Welcome to the Python-Pass-Manager!')
 def strengthChecker():
     password = input("Enter your Password: ")
     
+    def contains_number(s):
+        return any(char.isdigit() for char in s)
+    
     if len(password) < 6:
         print('Password is weak !')
         return
-    if len(password) < 10:
+    if 6 < len(password) and len(password) < 12:
         print('Password is Moderate !')
         return
-    if len(password) > 12:
+    if len(password) < 10 and contains_number(password):
         print('Password is Strong !')
         return
+    if len(password) > 12 and contains_number(password):
+        print('Password is very Strong !')
+        return
+    
 
 # Generate Password
 def generate():

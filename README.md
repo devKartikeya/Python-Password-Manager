@@ -60,13 +60,14 @@ Supports:
 
 ### 🛡️ Password Strength Checker
 
-Quickly evaluate the strength of any password based on its length.
+Quickly evaluate the strength of any password based on its length and complexity.
 
 Password categories include:
 
 * Weak
 * Moderate
 * Strong
+* Very Strong
 
 ---
 
@@ -171,11 +172,9 @@ It focuses on working with:
 Potential future enhancements include:
 
 * Password encryption
-* Password update functionality
 * Special character support in generated password
 * SQLite database support
 * GUI version using Tkinter or CustomTkinter
-* Better password strength analysis
 * Export and backup functionality
 
 ---
