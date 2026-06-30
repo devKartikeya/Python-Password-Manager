@@ -5,6 +5,19 @@ import string as s
 
 print('Welcome to the Python-Pass-Manager!')
 
+def strengthChecker():
+    password = input("Enter your Password: ")
+    
+    if len(password) < 6:
+        print('Password is weak !')
+        return
+    if len(password) < 10:
+        print('Password is Moderate !')
+        return
+    if len(password) > 12:
+        print('Password is Strong !')
+        return
+
 def generate():
     password = ""
     length = int(input('Enter Length of your Password: '))
@@ -14,12 +27,14 @@ def generate():
        for i in range(length):
            password += s.ascii_lowercase[r.randrange(0, len(s.ascii_lowercase))]
        print(f"Your password is: {password}")
+       return
        
     elif isNum.lower() == 'y':
         merge = s.ascii_lowercase + s.digits
         for i in range(length):
            password += merge[r.randrange(0, len(merge))]
         print(f"Your password is: {password}")
+        return
 
 def get():
     with open(".env", "r") as f:
@@ -34,6 +49,7 @@ def get():
                 
     else: 
         print("INVALID CREDENTIALS !")
+        return
         
 
 def add():
@@ -64,10 +80,11 @@ def add():
         result = json.dump(data, file, indent=4)
         if result: 
             print(f"Successfully added Account => {result}")
+            return
 
 
 def main():
-   print("'A' to Add Passwords\n'G' to Get all Passwords\n'F' to Generate Password")
+   print("'A' to Add Passwords\n'G' to Get all Passwords\n'F' to Generate Password\n 'D' to Check your Password's Strength")
    
    user_choice = input('Enter your choice: ')
    
@@ -76,6 +93,8 @@ def main():
    elif user_choice.lower() == 'g':
        get()
    elif user_choice.lower() == 'f':
+       generate()
+   elif user_choice.lower() == 'd':
        generate()
 
 main()
