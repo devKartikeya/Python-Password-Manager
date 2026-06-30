@@ -5,6 +5,7 @@ import string as s
 
 print('Welcome to the Python-Pass-Manager!')
 
+# Check Password Strength  
 def strengthChecker():
     password = input("Enter your Password: ")
     
@@ -18,6 +19,7 @@ def strengthChecker():
         print('Password is Strong !')
         return
 
+# Generate Password
 def generate():
     password = ""
     length = int(input('Enter Length of your Password: '))
@@ -36,7 +38,9 @@ def generate():
         print(f"Your password is: {password}")
         return
 
+# Get all account
 def get():
+    # Master Password to access vault
     with open(".env", "r") as f:
         admin_pass = f.readline().strip().lower()[6:]
         
@@ -51,7 +55,7 @@ def get():
         print("INVALID CREDENTIALS !")
         return
         
-
+# Add new account
 def add():
     website = input('Enter Website name: ')
     username = input('Enter Username: ')
