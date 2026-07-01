@@ -1,8 +1,8 @@
 # 🔐 Python Password Manager
 
-A robust command-line Password Manager built with Python that helps you securely organize account credentials in a local JSON database.
+A robust command-line Password Manager built with Python that helps you securely organize account credentials in a JSON database.
 
-The application allows users to save account information, search stored credentials, generate strong passwords, and evaluate password strength—all from a simple interface. Access to stored credentials is protected using a master password.
+The application allows users to save account information, edit and delete accounts, search stored credentials, generate strong passwords and evaluate password strength—all from a simple interface. Access to stored credentials is protected using a master password.
 
 ---
 
@@ -37,7 +37,7 @@ Display every stored account in the password vault after successful master passw
 
 ### 📋 Delete Account
 
-Delete account by first entering master password for verification and security.
+Delete account by first providing master password for verification and security.
 
 ---
 
@@ -75,7 +75,7 @@ Password categories include:
 
 Account information is stored locally using a JSON file.
 
-The master password is stored separately and is required to access saved credentials.
+The master password is securely stored separately and is required to access saved credentials.
 
 ---
 
@@ -145,7 +145,9 @@ python main.py
 
 * Add a new account
 * View all saved accounts
-* Generate a random password
+* Edit passwords
+* Delete a account accounts
+* Generate a strong password
 * Check password strength
 * Search for an account
 * Exit the application
@@ -154,7 +156,7 @@ python main.py
 
 ## 🎯 Purpose
 
-This project was built to strengthen Python fundamentals while developing a practical command-line utility.
+This project was built to strengthen Python fundamentals & logical thinking while developing a practical command-line utility.
 
 It focuses on working with:
 
