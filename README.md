@@ -1,6 +1,6 @@
 # 🔐 Python Password Manager
 
-A lightweight but robust command-line Password Manager built with Python that helps you securely organize account credentials in a local JSON database.
+A robust command-line Password Manager built with Python that helps you securely organize account credentials in a local JSON database.
 
 The application allows users to save account information, search stored credentials, generate strong passwords, and evaluate password strength—all from a simple interface. Access to stored credentials is protected using a master password.
 
