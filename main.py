@@ -14,16 +14,16 @@ def strengthChecker():
     
     if len(password) < 6:
         print('Password is weak !')
-        return
+        main()
     if 6 < len(password) and len(password) < 12:
         print('Password is Moderate !')
-        return
+        main()
     if len(password) < 10 and contains_number(password):
         print('Password is Strong !')
-        return
+        main()
     if len(password) > 12 and contains_number(password):
         print('Password is very Strong !')
-        return
+        main()
     
 # Generate Password
 def generate():
@@ -35,14 +35,14 @@ def generate():
        for i in range(length):
            password += s.ascii_lowercase[r.randrange(0, len(s.ascii_lowercase))]
        print(f"Your password is: {password}")
-       return
+       main()
        
     elif isNum.lower() == 'y':
         merge = s.ascii_lowercase + s.digits
         for i in range(length):
            password += merge[r.randrange(0, len(merge))]
         print(f"Your password is: {password}")
-        return
+        main()
 
 # Get all account
 def get():
@@ -59,7 +59,7 @@ def get():
                 
     else: 
         print("INVALID CREDENTIALS !")
-        return
+        main()
     
 # Edit Password
 def edit():
@@ -75,7 +75,7 @@ def edit():
                 with open("accounts.json", "w") as file: 
                     json.dump(data, file, indent=4)
                     print('Password changed: ', d)
-                    return
+                    main()
             
 # Delete Account                          
 def delete():
@@ -94,16 +94,16 @@ def delete():
                         with open("accounts.json", "w") as file: 
                             json.dump(data, file, indent=4)
                             print('Password deleted: ', d)
-                            return
+                            main()
                     else:
                         print('Password did not deleted !')
-                        return
+                        main()
                 else: 
                     print('Account not found !')
-                    return
+                    main()
     else: 
         print('INVALID CREDENTIALS !')
-        return
+        main()
             
 # Add new account
 def add():
@@ -134,7 +134,7 @@ def add():
         result = json.dump(data, file, indent=4)
         if result: 
             print(f"Successfully added Account => {result}")
-            return
+            main()
 
 # Search Account
 def search():
@@ -156,7 +156,7 @@ def search():
                 
     else: 
         print("INVALID CREDENTIALS !")
-        return
+        main()
    
 # Exit App 
 def Exit():
